@@ -1,0 +1,12 @@
+In this project, we will learn how to build a Convolutional Neural Network using TensorFlow 2.
+
+About the Data Set
+
+Fashion-MNIST is a dataset of Zalando's article images —consisting of a training set of 60,000 examples and a test set of 10,000 examples. Each example is a 28x28 grayscale image, associated with a label.
+
+The objective of the project is - to use Fashion-MNIST data set to identify (predict) different fashion products(articles) from the given images using Deep Learning.
+
+
+Acknowledgements
+
+Cloudxlab is using this “Fashion MNIST” problem for its machine learning learners for learning and practicing. Fashion-MNIST dataset is a collection of fashion article's images provided by Zalando . We thank Zalando Research for hosting the dataset.
