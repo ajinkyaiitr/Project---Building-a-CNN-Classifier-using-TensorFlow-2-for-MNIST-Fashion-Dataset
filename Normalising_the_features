@@ -1,0 +1,90 @@
+We shall now normalize the features(pixel values) of train, validation, and test sets with the mean and standard deviation values of the train data.
+So first we shall calculate the mean and standard deviation values of the train data.
+Then we use these values to normalize the pixel values.
+
+np.newaxis : Used to increase the array dimensionality by 1. Often used when we want to convert a numpy array into one higher dimensionality, like a 1D array to 2d array, or 2D array to 3D array and so on. More here.
+numpy_array.mean() : Compute the arithmetic mean along the specified axis. More here.
+
+For example,
+
+>>import numpy as np
+>>a = np.array(
+[
+    [
+        [10,11],
+        [10,11]
+    ],
+    [
+        [20,21],
+        [20,21]
+    ],
+    [
+        [30,31],
+        [30,31]
+    ]
+]
+)
+
+>>a.shape
+(3,2,2)
+
+>>print(a.mean())
+20.5
+
+>>print(a.mean(axis=0))
+[[20. 21.]
+ [20. 21.]]
+
+>>print(a.mean(axis=1))
+[[10. 11.]
+ [20. 21.]
+ [30. 31.]]
+
+>>print(a.mean(axis=2))
+[[10.5 10.5]
+ [20.5 20.5]
+ [30.5 30.5]]
+Similar is the case with standard deviation .std(). More here.
+
+INSTRUCTIONS
+Get the mean X_mean of X_train using mean() along the axis=0.
+
+X_mean = << your code comes here >>(axis=0, keepdims=True)
+Get the standard deviation X_std of X_train using std() along the axis=0.
+
+X_std = << your code comes here >>(axis=0, keepdims=True)
+Now, normalize the X_train values as follows:
+
+X_train = (X_train - X_mean) / X_std
+Similarly, normalize the X_valid values as follows:
+
+X_valid = << your code comes here >>
+Similarly, normalize the X_test values as follows:
+
+X_test = << your code comes here >>
+A convolutional layer, which is the first layer of our classifier we are going to build later, expects the input to be 4 dimensional: (batch size, filters or channels, width, height). So let us increase the dimensionality - using np.newaxis - of our data so that everything will be one batch each.
+
+X_train = X_train[..., np.newaxis]
+X_valid = X_valid[..., np.newaxis]
+X_test = X_test[..., np.newaxis]
+Now let's print the shape of these features in each of the sets:
+
+print ("Shape of features", X_train.shape, X_valid.shape, X_test.shape)
+
+@@@@CODE@@@@
+
+X_mean = X_train.mean(axis=0, keepdims=True)
+X_std = X_train.std(axis=0, keepdims=True)
+
+X_train = (X_train - X_mean) / X_std
+X_valid = (X_valid - X_mean) / X_std
+X_test = (X_test - X_mean) / X_std
+
+X_train = X_train[..., np.newaxis]
+X_valid = X_valid[..., np.newaxis]
+X_test = X_test[..., np.newaxis]
+
+print ("Shape of features", X_train.shape, X_valid.shape, X_test.shape)
+
+@@@@@@@@@@@@@@@@@@@
+
