@@ -1,0 +1,75 @@
+Building and Fitting the Model
+Let us build a Convolutional Neural Network for this classification problem.
+
+Note:
+
+partial : It is a function from functools. It returns a function object for a given function, with the flexibility to freeze some parameters. We can either change these parameters or leave them as they are. the remaining parameters which are not frozen should be passed to the newly generated function.
+
+For example,
+
+>>from functools import partial
+
+>>def func(a,b,c):
+>>    print(a+b+c)
+
+>>new_func_1 = partial(func, a=1, c=2)
+
+>>print(new_func_1(b=3))
+6
+
+>>print(new_func_1(a=0, b=3))
+5
+tf.keras.layers.Conv2D : 2D convolution layer function. It has various parameters like kernel_size, activation, padding, filters etc. More here.
+
+tf.keras.layers.MaxPool2D : Max pooling operation for 2D spatial data. More here.
+
+tf.keras.layers.Flatten : Flattens the input. More here.
+
+tf.keras.layers.Dense : Just your regular densely-connected NN layer. More here.
+
+tf.keras.layers.Dropout : Applies Dropout to the input.
+
+Since the class labels are integer indices, we use sparse_categorical_cross entropy. If the class labels are one-hot vectors, we could use categorical_crossentropy.
+
+For metrics parameter of the model.compile, we can mention evaluation metrics we want the model to return. Here we shall write accuracy.
+
+INSTRUCTIONS
+Import partial from functools.
+
+from << your code comes here >> import << your code comes here >>
+Make the partial function named DefaultConv2D using partial function imported from functools. We pass the keras.layers.Conv2D function and other parameters to freeze them. We could change them later.
+
+<< your code comes here >> = << your code comes here >>(keras.layers.Conv2D,
+                kernel_size=3, activation='relu', padding="SAME")
+Now use this DefaultConv2D along with the other layers(like keras.layers.MaxPooling2D, keras.layers.Dense, etc.) to build the classification model model. Here we set input_shape as [28, 28, 1] since the size of each image is 28x28x1.
+
+model = keras.models.Sequential([
+    DefaultConv2D(filters=64, kernel_size=7, input_shape=[28, 28, 1]), 
+    keras.layers.MaxPooling2D(pool_size=2), 
+    DefaultConv2D(filters=128),  
+    DefaultConv2D(filters=128),
+    keras.layers.MaxPooling2D(pool_size=2),
+    DefaultConv2D(filters=256),
+    DefaultConv2D(filters=256),
+    keras.layers.MaxPooling2D(pool_size=2),
+    keras.layers.Flatten(),
+    keras.layers.Dense(units=128, activation='relu'),
+    keras.layers.Dropout(0.5),
+    keras.layers.Dense(units=64, activation='relu'),
+    keras.layers.Dropout(0.5),
+    keras.layers.Dense(units=10, activation='softmax'),
+])
+Observe here, that we changed the kernel_size(which we initially freezer to be 3) in the DefaultConv2D, and we have also mentioned other parameter values.
+
+Use model.compile and compile it with loss="sparse_categorical_crossentropy", optimizer="nadam", metrics=["accuracy"].
+
+<< your code comes here >>(loss="sparse_categorical_crossentropy", optimizer="nadam", metrics=["accuracy"])
+Use fit method of the model to start training on the train dataX_train, y_train. Use validation_data = (X_valid, y_valid).
+
+history = << your code comes here >>(X_train, y_train, epochs=3, validation_data=(X_valid, y_valid))
+
+
+@@@@@@@@@@@@@@@@@
+CODE
+@@@@@@@@@@@@@@@@@
+
