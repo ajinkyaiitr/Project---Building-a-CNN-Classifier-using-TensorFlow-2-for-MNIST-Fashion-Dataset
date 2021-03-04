@@ -1,0 +1,30 @@
+Import numpy as np.
+
+import << your code comes here >> as << your code comes here >>
+Import tensorflow as tf and check the version of tensorflow.
+
+import << your code comes here >> as << your code comes here >>
+print("Tensorflow version", tf.__version__)
+Import keras from tensorflow and check the version of keras.
+
+from tensorflow import << your code comes here >>
+print("Keras version", <<your code comes here >>)
+Import matplotlib.pyplot as plt.
+
+import  << your code comes here >> as << your code comes here >>
+Set the random seed for tf and np so as to reuse the same set of random variables and reproduce the results.
+
+np.random.seed(42) 
+tf.random.set_seed(42)
+
+CODE
+-------------
+import numpy as np
+import tensorflow as tf
+print("Tensorflow version",tf.__version__)
+from tensorflow import keras 
+print("keras version",keras.__version__)
+import matplotlib.pyplot as plt
+np.random.seed(42)
+tf.random.set_seed(42)
+-------------
