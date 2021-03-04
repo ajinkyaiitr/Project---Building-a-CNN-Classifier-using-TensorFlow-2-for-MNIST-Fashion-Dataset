@@ -1,0 +1,17 @@
+
+Let's load the fashion MNIST dataset. Keras has a number of functions to load popular datasets in keras.datasets. The dataset is already split for you between a training set and a test set.
+Get the fashion mnist dataset module from keras using keras.datasets.fashion_mnist.
+
+fashion_mnist = << your code comes here >>
+Load and sort the data into train and test sets using load_data() function of fashion_mnist:
+
+(X_train_full, y_train_full), (X_test, y_test) = fashion_mnist.<< your code comes here >>
+Let us see the shape of the training dataset.
+
+X_train_full.shape
+
+CODE
+---------------------------
+fashion_mnist = keras.datasets.fashion_mnist
+(X_train_full,y_train_full), (X_test,y_test) = fashion_mnist.load_data()
+X_train_full.shape
