@@ -1,0 +1,60 @@
+Let us see how well our model has learned from the train data, by testing it on the test data.
+
+Note:
+
+model.evaluate(X_test, y_test) : Returns a list with the loss(at index 0) and accuracy(at index 1) of the predictions of the model on X_test.
+
+array[a:b] : Returns the elements of array from index a till b-1 inclusive.
+
+model.predict : Generates output predictions for the input samples. It returns the probabilities of each class for a given test sample. We consider the classification to be of that class(or of that index) whose probability of the highest.
+
+np.argmax : Returns the indices of the maximum values along an axis. More here.
+
+For example,
+
+>> a = array([[10, 11, 12],
+          [13, 14, 15]])
+
+>> np.argmax(a)
+   5
+
+>> np.argmax(a, axis=0)
+array([1, 1, 1])
+
+>> np.argmax(a, axis=1)
+array([2, 2])
+INSTRUCTIONS
+Use model.evaluate on X_test, y_test to see the test data prediction accuracy:
+
+results = << your code comes here >>(X_test, y_test)
+Print the accuracy on the test data.
+
+print(results[1])
+Let us see the predictions of 9 of the test samples from index 10.
+
+Slice the X_test to get 9 of the data samples of the test data from index 10.
+
+X_new = << your code comes here >>
+Use model.predict on X_new and get the predictions in y_pred.
+
+y_pred = << your code comes here >>(X_new)
+Use np.argmax on y_pred along the axis=1 and print the classes predicted by the model on X_new.
+
+print(<< your code comes here >>(y_pred, axis=1))
+Let us also look at the original classes of X_new.
+
+print (y_test[10:20])
+
+
+
+@@@@@@@@@@@@@@@
+CODE
+@@@@@@@@@@@@@@@
+
+results = model.evaluate(X_test,y_test)
+print(results[1])
+X_new = X_test[:9]
+y_pred = model.predict(X_new)
+print(np.argmax(y_pred,axis=1))
+print(y_test[10:20])
+
