@@ -1,0 +1,41 @@
+Though the dataset is already split for you between a training set and a test set, it can be useful to split the training set further to have a validation set. We shall do that here.Let's split the full training set into a validation set and a (smaller) training set. We will also scale the pixel intensities down to the 0-1 range and convert them to floats, by dividing by 255.
+
+
+------------------------------------------------------------------------------------------------------
+Let us see an image from the dataset using plt.imshow.
+
+plt.imshow(X_train_full[0], cmap="Greys")
+Let us see the class of the image.
+
+print ("item0", y_train_full[0])
+Slice the first samples from 55000 of the X_train_full store these samples in X_train.
+
+X_train = << your code comes here >>[:55000]
+Store the remaining samples from 55000 of the y_train_full to form the y_train.
+
+y_train = << your code comes here >>[:55000]
+Similarly, slice the remaining samples from the X_train_full and store these samples in X_valid.
+
+X_valid = << your code comes here >>[55000:]
+Store the remaining values from y_train_full to form the y_train.
+
+y_valid = << your code comes here >>[55000:]
+Let us print the shapes of the train data, validation data, and test data.
+
+print("Train data shape:",X_train.shape)
+print("Validation data shape:",<< your code comes here >>)
+print("Test data shape:",<< your code comes here >>)
+----------------------------------------------------------------------------------------------------------
+
+CODE
+@@@@@@@@@@@
+plt.imshow(X_train_full[0], cmap="Greys")
+print ("item0", y_train_full[0])
+X_train = X_train_full[:55000]
+y_train = y_train_full[:55000]
+X_valid = X_train_full[55000:]
+y_valid = y_train_full[55000:]
+print("Train data shape:",X_train.shape)
+print("Validation data shape:",X_valid.shape)
+print("Test data shape:",y_train.shape)
+@@@@@@@@@@@
